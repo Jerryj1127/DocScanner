@@ -2,9 +2,9 @@
 #http://www.pyimagesearch.com/2014/09/01/build-kick-ass-mobile-document-scanner-just-5-minutes/
 #https://github.com/andrewdcampbell/OpenCV-Document-Scanner
 
-import transform
-import utils
-import crop_polygon as poly_i
+import core.transform as transform
+import core.utils as utils
+import core.crop_polygon as poly_i
 
 from scipy.spatial import distance as dist
 from matplotlib.patches import Polygon
@@ -259,12 +259,11 @@ class DocScanner(object):
         new_points = np.array([[p] for p in new_points], dtype = "int32")
         return new_points.reshape(4, 2)
 
-    def scan(self, image_path):
+    def scan(self, image_path, OUTPUT_DIR):
         '''The Scanner method. Pass in an image to this method to get the scanned image. 
             Trun on intractive mode to get an intractive cropping screen.'''
 
         RESCALED_HEIGHT = 500.0
-        OUTPUT_DIR = 'output'
 
         # load the image and compute the ratio of the old height
         # to the new height, clone it, and resize it
@@ -301,18 +300,9 @@ class DocScanner(object):
         #Creates a  new dir 'OUTPUT' if if doesnt exist
         if not os.path.isdir(OUTPUT_DIR):
             os.mkdir(OUTPUT_DIR)
-        
-        cv2.imwrite(OUTPUT_DIR + '/' + basename, thresh)
+        filename = OUTPUT_DIR + '/' + 'Scan'+basename
+        cv2.imwrite(filename, thresh)
         print("Proccessed :" + basename)
-
-
-if __name__ == "__main__":
+        return filename
     
-    scanner = DocScanner()
-
-    filename = 'test/testpage.jpeg'
-    scanner.scan(filename)
-    #for filename in os.listdir('test'):
-    #    if filename.endswith('.jpeg'):
-    #       print(filename)
-    #        scanner.scan('test/'+filename)
+scanner = DocScanner(interactive=False)
