@@ -1,23 +1,20 @@
 from pyrogram import Client, filters
 import pyrogram
-
+import os
 from creds import Creds
-from handler import doc,pic
+from handler import doc,pic, pdf
 from core.main import scanner
 
 app = Client(
         "DOC_SCANNER",
-        bot_token=Creds.TG_TOKEN,
-        api_id=Creds.APP_ID,
-        api_hash=Creds.API_HASH,
+        bot_token=os.environ.get('Token'),
+        api_id=os.environ.get('API_ID'),
+        api_hash=os.environ.get('API_HASH'),
         workers=343
     )
 
 def status(client, message):
     message.reply_text("I'm alive :)")
-async def test(client, message):
-    file = '626538372/Screenshot_2021-01-30-17-15-45-622_com.android.chrome.jpg'
-    scanner.scan(file)
 
 #The document Handler
 app.add_handler(pyrogram.handlers.MessageHandler(doc,filters=filters.document))
@@ -27,7 +24,7 @@ app.add_handler(pyrogram.handlers.MessageHandler(pic,filters=filters.photo))
 
 #The status hander
 app.add_handler(pyrogram.handlers.MessageHandler(status,filters=filters.command(['status'])))
-app.add_handler(pyrogram.handlers.MessageHandler(test,filters=filters.command(['pdf'])))
+app.add_handler(pyrogram.handlers.MessageHandler(pdf,filters=filters.command(['pdf'])))
 
 
 
