@@ -1,29 +1,27 @@
 {
-    "name": "Document Scanner Bot",
-    "description": "Scan the images and convert the whole into a PDF",
-    "repository": "https://github.com/Jerryj1127/DocScanner",
+    "name": "GDrive Uploader Bot",
+    "description": "Gdrive Uploader bot for Telegram. Upload Files via direct link to Google Drive",
+    "repository": "https://github.com/TeamUserByte/Google-Drive-Uploader",
     "logo": "https://telegra.ph/file/da4d4ff71ea6b59d3694a.jpg",
-    "keywords": ["Document Scanner"],
+    "keywords": ["Google Drive"],
     "env": {
-              "Token": {
-                        "description": "Enter the bot Token"
-              }, 
-            "API_ID": {
-                "description": "Enter the API ID"
-            },
-            "API_HASH": {
-                "description": "Enter the API HASH"
-            }
+              "Skip": {
+                        "description": "Skipped"
+              }
     },
     "buildpacks": [
               {
+                  "url": "https://github.com/heroku/heroku-buildpack-apt.git"
+              },
+              {
+                   "url": "https://github.com/jkutner/heroku-buildpack-ngrok"
+              },
+              {
                   "url": "heroku/python"
+              },
+              {
+                  "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
               }
-    ],
-    "formation": {
-        "worker": {
-            "quantity": 1,
-            "size": "free"
-        }
-    }
+              
+    ]
 }
