@@ -1,7 +1,7 @@
 {
     "name": "Document Scanner Bot",
     "description": "Scan the images and convert the whole into a PDF",
-    "repository": "",
+    "repository": "https://github.com/Jerryj1127/DocScanner",
     "logo": "https://telegra.ph/file/da4d4ff71ea6b59d3694a.jpg",
     "keywords": ["Google Drive"],
     "env": {
@@ -18,9 +18,6 @@
     "buildpacks": [
               {
                   "url": "https://github.com/heroku/heroku-buildpack-apt.git"
-              },
-              {
-                   "url": "https://github.com/jkutner/heroku-buildpack-ngrok"
               },
               {
                   "url": "heroku/python"
