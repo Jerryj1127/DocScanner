@@ -1,3 +1,4 @@
+#usr/bin/env python3
 from pyrogram import Client, filters
 import pyrogram
 import os
