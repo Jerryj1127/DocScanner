@@ -3,7 +3,7 @@
     "description": "Scan the images and convert the whole into a PDF",
     "repository": "https://github.com/Jerryj1127/DocScanner",
     "logo": "https://telegra.ph/file/da4d4ff71ea6b59d3694a.jpg",
-    "keywords": ["Google Drive"],
+    "keywords": ["Document Scanner"],
     "env": {
               "Token": {
                         "description": "Enter the bot Token"
@@ -17,14 +17,7 @@
     },
     "buildpacks": [
               {
-                  "url": "https://github.com/heroku/heroku-buildpack-apt.git"
-              },
-              {
                   "url": "heroku/python"
-              },
-              {
-                  "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
               }
-              
     ]
 }
