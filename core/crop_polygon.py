@@ -22,7 +22,7 @@ class PolygonInteractor(object):
         self.poly = poly
 
         x, y = zip(*self.poly.xy)
-        self.line = Line2D(x, y, marker='o', markerfacecolor='r', animated=True)
+        self.line = Line2D(x, y, marker='o', markerfacecolor='b', animated=True)
         self.ax.add_line(self.line)
         #https://matplotlib.org/3.1.0/gallery/color/named_colors.html
         #Detiled information on colours and stuffs

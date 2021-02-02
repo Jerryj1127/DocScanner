@@ -2,9 +2,9 @@
 #http://www.pyimagesearch.com/2014/09/01/build-kick-ass-mobile-document-scanner-just-5-minutes/
 #https://github.com/andrewdcampbell/OpenCV-Document-Scanner
 
-import transform
-import utils
-import crop_polygon as poly_i
+import core.transform as transform
+import core.utils as utils
+import core.crop_polygon as poly_i
 
 from scipy.spatial import distance as dist
 from matplotlib.patches import Polygon
@@ -246,7 +246,7 @@ class DocScanner(object):
         return screenCnt.reshape(4, 2)
 
     def interactive_get_contour(self, screenCnt, rescaled_image):
-        poly = Polygon(screenCnt, animated=True, fill=False, color="green", linewidth=3)
+        poly = Polygon(screenCnt, animated=True, fill=False, color="red", linewidth=3)
         fig, ax = plt.subplots()
         ax.add_patch(poly)
         ax.set_title(('Drag the corners of the box to the corners of the document. \n'
@@ -305,14 +305,4 @@ class DocScanner(object):
         cv2.imwrite(OUTPUT_DIR + '/' + basename, thresh)
         print("Proccessed :" + basename)
 
-
-if __name__ == "__main__":
     
-    scanner = DocScanner()
-
-    filename = 'test/testpage.jpeg'
-    scanner.scan(filename)
-    #for filename in os.listdir('test'):
-    #    if filename.endswith('.jpeg'):
-    #       print(filename)
-    #        scanner.scan('test/'+filename)
